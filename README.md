@@ -1,15 +1,13 @@
+O projeto foi criado para conectar vendedores e compradores de forma simples e prática.
 
-O projeto foi criado para conectar vendedores e compradores de forma simples e fácil.
+Todos os usuários devem realizar um cadastro para aceder o aplicativo.
 
+Fluxo de Utilização:
 
-Todos os utilizadores devem realizar um cadastro para poderem aceder ao aplicativo.
+1. O vendedor divulga seu produto.
 
-Fluxo de Utilização
+2. O comprador adiciona o produto ao carrinho.
 
-1. O vendedor expõe o seu produto.
+3. Após adicionar ao carrinho, o comprador deve entrar em contato diretamente com o vendedor.
 
-2. O comprador, por sua vez, adiciona o produto ao carrinho.
-
-3. Após adicionar ao carrinho, o comprador deve contactar o vendedor diretamente.
-
-4. O contato é feito para que ambos possam combinar como será o processo de troca do dinheiro e do produto.
+4. O contato é feito para que ambos possam combinar os detalhes da transação, como a forma de pagamento e a entrega do produto.
