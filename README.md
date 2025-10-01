@@ -1,10 +1,11 @@
-Conectando Vendedores e Compradores
+
 O projeto foi criado para conectar vendedores e compradores de forma simples e fácil.
 
-Acesso e Cadastro
+
 Todos os utilizadores devem realizar um cadastro para poderem aceder ao aplicativo.
 
 Fluxo de Utilização
+
 1. O vendedor expõe o seu produto.
 
 2. O comprador, por sua vez, adiciona o produto ao carrinho.
