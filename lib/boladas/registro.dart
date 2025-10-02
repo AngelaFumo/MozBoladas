@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart'; // necessário para input formatter
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -11,6 +12,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final _formKey = GlobalKey<FormState>();
   final _nameController = TextEditingController();
   final _emailController = TextEditingController();
+  final _phoneController = TextEditingController();
   final _passwordController = TextEditingController();
   bool _obscure = true;
 
@@ -18,6 +20,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   void dispose() {
     _nameController.dispose();
     _emailController.dispose();
+    _phoneController.dispose();
     _passwordController.dispose();
     super.dispose();
   }
@@ -97,6 +100,32 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ),
                 const SizedBox(height: 16),
 
+                // Campo de telefone corrigido
+                TextFormField(
+                  controller: _phoneController,
+                  keyboardType: TextInputType.number,
+                  maxLength: 9,
+                  inputFormatters: [
+                    FilteringTextInputFormatter.digitsOnly, // só números
+                  ],
+                  decoration: const InputDecoration(
+                    labelText: 'Digite o teu número de telefone',
+                    prefixIcon: Icon(Icons.phone),
+                    border: OutlineInputBorder(),
+                    counterText: "",
+                  ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Por favor insira o número de telefone';
+                    }
+                    if (!RegExp(r'^(82|| 83 || 84 || 85 || 86 ||87)[0-9]{7}$').hasMatch(value)) {
+                      return 'Número inválido. Deve ter 9 dígitos e começar com 82-87';
+                    }
+                    return null;
+                  },
+                ),
+                const SizedBox(height: 16),
+
                 TextFormField(
                   controller: _passwordController,
                   obscureText: _obscure,
@@ -128,8 +157,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ElevatedButton(
                   onPressed: _register,
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.blue, 
-                    foregroundColor: Colors.white, 
+                    backgroundColor: Colors.blue,
+                    foregroundColor: Colors.white,
                     padding: const EdgeInsets.symmetric(vertical: 16),
                   ),
                   child: const Text('Enviar'),
@@ -142,7 +171,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     const Text('Já tem conta?'),
                     TextButton(
                       onPressed: () {
-                        Navigator.pop(context); 
+                        Navigator.pop(context);
                       },
                       child: const Text('Fazer login'),
                     ),

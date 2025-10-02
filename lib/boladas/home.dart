@@ -1,6 +1,7 @@
 // lib/boladas/home.dart
 import 'package:flutter/material.dart';
-import 'comprar.dart'; // importar a tela de compra
+import 'comprar.dart';
+import 'definicoes.dart'; // importar a tela de definições
 
 final List<Map<String, dynamic>> sampleProducts = [
   {
@@ -47,23 +48,29 @@ class HomeScreen extends StatelessWidget {
                 children: const [
                   CircleAvatar(radius: 28, backgroundColor: Colors.white),
                   SizedBox(height: 12),
-                  Text('Olá, ', style: TextStyle(color: Colors.white, fontSize: 18)),
+                  Text('Olá, Angela Isabel ', style: TextStyle(color: Colors.white, fontSize: 18)),
                 ],
               ),
             ),
             ListTile(
               leading: const Icon(Icons.shopping_bag),
-              title: const Text('Minhas Compras', style: TextStyle(color: Colors.white)),
+              title: const Text('Minhas Compras'),
               onTap: () {},
             ),
             ListTile(
               leading: const Icon(Icons.settings),
-              title: const Text('Definições', style: TextStyle(color: Colors.white)),
-              onTap: () {},
+              title: const Text('Definições'),
+              onTap: () {
+                Navigator.pop(context); // fecha o Drawer
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => const DefinicoesScreen()),
+                );
+              },
             ),
             ListTile(
               leading: const Icon(Icons.logout),
-              title: const Text('Logout', style: TextStyle(color: Colors.white)),
+              title: const Text('Logout'),
               onTap: () {},
             ),
           ],
@@ -109,11 +116,10 @@ class HomeScreen extends StatelessWidget {
                 const SizedBox(height: 10),
                 Row(
                   children: [
-                    // MANTER apenas o menu branco
                     Builder(
                       builder: (context) => IconButton(
                         icon: const Icon(Icons.menu),
-                        color: Colors.white, // menu branco
+                        color: Colors.white,
                         onPressed: () => Scaffold.of(context).openDrawer(),
                       ),
                     ),

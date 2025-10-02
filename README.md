@@ -1,3 +1,5 @@
+Telas feitas em flutter 
+
 O projeto foi criado para conectar vendedores e compradores de forma simples e prática.
 
 Todos os usuários devem realizar um cadastro para aceder o aplicativo.
