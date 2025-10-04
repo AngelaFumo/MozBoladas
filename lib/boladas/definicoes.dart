@@ -20,11 +20,11 @@ class _DefinicoesScreenState extends State<DefinicoesScreen> {
 
   String? _profileImage;
   bool _obscure = true;
-  bool _receberNotificacoes = true; // estado das notificações
+  bool _receberNotificacoes = true; 
 
   void _alterarFoto() {
     setState(() {
-      _profileImage = 'assets/images/profile_placeholder.jpg'; // simulação
+      _profileImage = 'assets/images/profile_placeholder.jpg'; 
     });
   }
 
@@ -64,7 +64,7 @@ class _DefinicoesScreenState extends State<DefinicoesScreen> {
                     ),
                     const SizedBox(height: 20),
 
-                    // Foto do usuário
+                    
                     GestureDetector(
                       onTap: _alterarFoto,
                       child: Center(
@@ -81,7 +81,7 @@ class _DefinicoesScreenState extends State<DefinicoesScreen> {
                     ),
                     const SizedBox(height: 16),
 
-                    // Nome editável
+                   
                     ListTile(
                       leading: const Icon(Icons.person, color: Colors.deepPurple),
                       title: const Text('Nome do Usuário'),
@@ -97,7 +97,7 @@ class _DefinicoesScreenState extends State<DefinicoesScreen> {
                     ),
                     const SizedBox(height: 12),
 
-                    // Email editável
+                    
                     ListTile(
                       leading: const Icon(Icons.email, color: Colors.deepPurple),
                       title: const Text('E-mail'),
@@ -114,7 +114,7 @@ class _DefinicoesScreenState extends State<DefinicoesScreen> {
                     ),
                     const SizedBox(height: 12),
 
-                    // Senha editável
+                    
                     ListTile(
                       leading: const Icon(Icons.lock, color: Colors.deepPurple),
                       title: const Text('Alterar Senha'),
@@ -141,7 +141,7 @@ class _DefinicoesScreenState extends State<DefinicoesScreen> {
                     ),
                     const SizedBox(height: 12),
 
-                    // Contacto editável
+                    
                     ListTile(
                       leading: const Icon(Icons.phone, color: Colors.deepPurple),
                       title: const Text('Contacto'),
@@ -220,7 +220,7 @@ class _DefinicoesScreenState extends State<DefinicoesScreen> {
               ),
               const SizedBox(height: 12),
 
-              // Botão Atualizar
+              
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton.icon(

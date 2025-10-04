@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart'; // necessário para input formatter
+import 'package:flutter/services.dart'; 
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({super.key});
@@ -100,13 +100,13 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 ),
                 const SizedBox(height: 16),
 
-                // Campo de telefone corrigido
+               
                 TextFormField(
                   controller: _phoneController,
                   keyboardType: TextInputType.number,
                   maxLength: 9,
                   inputFormatters: [
-                    FilteringTextInputFormatter.digitsOnly, // só números
+                    FilteringTextInputFormatter.digitsOnly, 
                   ],
                   decoration: const InputDecoration(
                     labelText: 'Digite o teu número de telefone',

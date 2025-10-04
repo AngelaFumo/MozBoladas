@@ -1,22 +1,23 @@
-// lib/boladas/home.dart
 import 'package:flutter/material.dart';
-import 'comprar.dart';
-import 'definicoes.dart'; // importar a tela de definições
+import 'definicoes.dart';
+import "vendas.dart";
+import "compras.dart";
+import "comprar.dart";
 
 final List<Map<String, dynamic>> sampleProducts = [
   {
-    'name': 'Spatilh Samba',
+    'name': 'Sapatos Classicos',
     'desc': 'Sapatos estilosos e confortáveis',
     'price': 5000.0,
-    'image': 'assets/images/product1.jpg',
+    'image': 'imagens/image.png',
     'rating': 4.5,
     'contact': '912345678',
   },
   {
-    'name': 'Camisa Azul',
+    'name': 'Vestido Rodado',
     'desc': 'Camisa de algodão premium',
     'price': 2000.0,
-    'image': 'assets/images/product2.jpg',
+    'image': 'imagens/vestido.jpg',
     'rating': 4.0,
     'contact': '912345679',
   },
@@ -24,7 +25,7 @@ final List<Map<String, dynamic>> sampleProducts = [
     'name': 'Relógio Digital',
     'desc': 'Design moderno, resistente à água',
     'price': 3500.0,
-    'image': 'assets/images/product3.jpg',
+    'image': 'imagens/relogio.webp',
     'rating': 4.7,
     'contact': '912345680',
   },
@@ -37,6 +38,8 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[100],
+
+    
       drawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
@@ -48,20 +51,39 @@ class HomeScreen extends StatelessWidget {
                 children: const [
                   CircleAvatar(radius: 28, backgroundColor: Colors.white),
                   SizedBox(height: 12),
-                  Text('Olá, Angela Isabel ', style: TextStyle(color: Colors.white, fontSize: 18)),
+                  Text('Olá, Angela Isabel',
+                      style: TextStyle(color: Colors.white, fontSize: 18)),
                 ],
               ),
             ),
             ListTile(
-              leading: const Icon(Icons.shopping_bag),
+              leading: const Icon(Icons.shopping_bag, color: Colors.deepPurple),
               title: const Text('Minhas Compras'),
-              onTap: () {},
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (_) => const MinhasComprasScreen()),
+                );
+              },
             ),
             ListTile(
-              leading: const Icon(Icons.settings),
+              leading: const Icon(Icons.store, color: Colors.deepPurple),
+              title: const Text('Minhas Vendas'),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => const MinhasVendasScreen()),
+                );
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.settings, color: Colors.deepPurple),
               title: const Text('Definições'),
               onTap: () {
-                Navigator.pop(context); // fecha o Drawer
+                Navigator.pop(context);
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (_) => const DefinicoesScreen()),
@@ -69,22 +91,23 @@ class HomeScreen extends StatelessWidget {
               },
             ),
             ListTile(
-              leading: const Icon(Icons.logout),
+              leading: const Icon(Icons.logout, color: Colors.deepPurple),
               title: const Text('Logout'),
               onTap: () {},
             ),
           ],
         ),
       ),
+
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(100),
         child: AppBar(
           backgroundColor: Colors.deepPurple,
           elevation: 0,
+          automaticallyImplyLeading: false,
           flexibleSpace: Padding(
             padding: const EdgeInsets.only(top: 28, left: 16, right: 16),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -109,6 +132,13 @@ class HomeScreen extends StatelessWidget {
                           color: Colors.white,
                           onPressed: () {},
                         ),
+                        Builder(
+                          builder: (context) => IconButton(
+                            icon: const Icon(Icons.menu),
+                            color: Colors.white,
+                            onPressed: () => Scaffold.of(context).openDrawer(),
+                          ),
+                        ),
                       ],
                     ),
                   ],
@@ -116,14 +146,6 @@ class HomeScreen extends StatelessWidget {
                 const SizedBox(height: 10),
                 Row(
                   children: [
-                    Builder(
-                      builder: (context) => IconButton(
-                        icon: const Icon(Icons.menu),
-                        color: Colors.white,
-                        onPressed: () => Scaffold.of(context).openDrawer(),
-                      ),
-                    ),
-                    const SizedBox(width: 8),
                     Expanded(
                       child: Container(
                         height: 40,
@@ -133,10 +155,12 @@ class HomeScreen extends StatelessWidget {
                         ),
                         child: TextField(
                           decoration: InputDecoration(
-                            prefixIcon: const Icon(Icons.search, color: Colors.grey),
+                            prefixIcon:
+                                const Icon(Icons.search, color: Colors.grey),
                             hintText: 'Pesquisar produtos...',
                             border: InputBorder.none,
-                            contentPadding: const EdgeInsets.symmetric(vertical: 10),
+                            contentPadding:
+                                const EdgeInsets.symmetric(vertical: 10),
                           ),
                         ),
                       ),
@@ -148,6 +172,7 @@ class HomeScreen extends StatelessWidget {
           ),
         ),
       ),
+
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
         child: ListView.builder(
@@ -210,7 +235,8 @@ class ProductCard extends StatelessWidget {
                     height: 90,
                     color: Colors.grey[200],
                     alignment: Alignment.center,
-                    child: const Icon(Icons.image_not_supported, size: 36, color: Colors.grey),
+                    child: const Icon(Icons.image_not_supported,
+                        size: 36, color: Colors.grey),
                   );
                 },
               ),
@@ -220,12 +246,17 @@ class ProductCard extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(name, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                  Text(name,
+                      style: const TextStyle(
+                          fontSize: 16, fontWeight: FontWeight.bold)),
                   const SizedBox(height: 6),
-                  Text(description, style: const TextStyle(color: Colors.black54)),
+                  Text(description,
+                      style: const TextStyle(color: Colors.black54)),
                   const SizedBox(height: 8),
                   Text('${price.toStringAsFixed(0)} Mt',
-                      style: const TextStyle(color: Colors.deepPurple, fontWeight: FontWeight.bold)),
+                      style: const TextStyle(
+                          color: Colors.deepPurple,
+                          fontWeight: FontWeight.bold)),
                   const SizedBox(height: 8),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -258,10 +289,13 @@ class ProductCard extends StatelessWidget {
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.blue,
-                          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 12, vertical: 8),
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8)),
                         ),
-                        child: const Text('Adicionar', style: TextStyle(color: Colors.white)),
+                        child: const Text('Adicionar',
+                            style: TextStyle(color: Colors.white)),
                       ),
                     ],
                   ),

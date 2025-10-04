@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'psucesso.dart'; // <-- Importa a tela de confirmação
+import 'psucesso.dart';
 
 class PrevisualizacaoProdutoScreen extends StatelessWidget {
   final String nome;
@@ -78,7 +78,7 @@ class PrevisualizacaoProdutoScreen extends StatelessWidget {
                   Expanded(
                     child: ElevatedButton(
                       onPressed: () {
-                        // Navega para a tela de confirmação
+                        
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
